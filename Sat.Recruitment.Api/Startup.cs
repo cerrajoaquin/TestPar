@@ -18,6 +18,7 @@ namespace Sat.Recruitment.Api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -27,6 +28,7 @@ namespace Sat.Recruitment.Api
         {
             services.AddControllers();
             services.AddSwaggerGen();
+            services.AddScoped<IUserReader, UserReader>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +39,7 @@ namespace Sat.Recruitment.Api
                 app.UseDeveloperExceptionPage();
             }
             app.UseSwagger();
+
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
@@ -52,6 +55,7 @@ namespace Sat.Recruitment.Api
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
